@@ -67,7 +67,14 @@
                 </form>
                 </li>
 
-                <li><a href="#">CHANGE PASSWORD</a></li>
+                <li>
+                  <form id="change-password">
+                  <a href="#">CHANGE PASSWORD</a>
+                  <input type="password" name="passwords[old]" value="" placeholder="Old Password">
+          <input type="password" name="passwords[new]" value="" placeholder="New Password">
+          <input type="submit" name="submit" value="Change Password">
+                  </form>
+                </li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">SIGN OUT</a></li>
                 <form id="sign-out">
