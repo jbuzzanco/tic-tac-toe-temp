@@ -38,3 +38,10 @@ const signOut = () => {
     },
   });
 };
+
+module.exports = {
+  signUp,
+  signIn,
+  changePassword,
+  signOut,
+}

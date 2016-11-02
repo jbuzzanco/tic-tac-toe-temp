@@ -6,6 +6,7 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onSignUpUser = function (event) {
+  debugger;
   let data = getFormFields(event.target);
   event.preventDefault();
   api.signUp(data)
@@ -15,6 +16,7 @@ const onSignUpUser = function (event) {
 
 const onSignInUser = function (event) {
   event.preventDefault();
+  // debugger;
   let data = getFormFields(event.target);
   // $('.player-id').text("Hello!: " + data);
   api.signIn(data)
@@ -37,7 +39,7 @@ const onSignOutUser = function () {
 };
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUpUser);
+  $('.sign-up-form').on('submit', onSignUpUser);
   $('#sign-in').on('submit', onSignInUser);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out-button').on('click', onSignOutUser);
