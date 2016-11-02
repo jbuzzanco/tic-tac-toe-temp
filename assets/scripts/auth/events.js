@@ -6,12 +6,11 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onSignUpUser = function (event) {
-  debugger;
   let data = getFormFields(event.target);
   event.preventDefault();
   api.signUp(data)
-  .done(ui.success)
-  .fail(ui.failure);
+  .then(ui.success)
+  .catch(ui.failure);
 };
 
 const onSignInUser = function (event) {
@@ -20,26 +19,26 @@ const onSignInUser = function (event) {
   let data = getFormFields(event.target);
   // $('.player-id').text("Hello!: " + data);
   api.signIn(data)
-  .done(ui.signInSuccess)
-  .fail(ui.signInFailure);
+  .then(ui.signInSuccess)
+  .catch(ui.signInFailure);
 };
 
 const onChangePassword = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.changePassword(data)
-  .done(ui.changePasswordSuccess)
-  .fail(ui.failure);
+  .then(ui.changePasswordSuccess)
+  .catch(ui.failure);
 };
 
 const onSignOutUser = function () {
   api.signOut()
-  .done(ui.signOutSuccess)
-  .fail(ui.failure);
+  .then(ui.signOutSuccess)
+  .catch(ui.failure);
 };
 
 const addHandlers = () => {
-  $('.sign-up-form').on('submit', onSignUpUser);
+  $('#sign-up').on('submit', onSignUpUser);
   $('#sign-in').on('submit', onSignInUser);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out-button').on('click', onSignOutUser);
