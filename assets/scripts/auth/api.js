@@ -1,6 +1,7 @@
 'use strict';
 
 const app = require('../app');
+const store = require('../store');
 
 const signUp = (data) => {
   return $.ajax({
@@ -20,10 +21,10 @@ const signIn = (data) => {
 
 const changePassword = (data) => {
   return $.ajax({
-    url: app.host + '/change-password/' + app.user.id,
+    url: app.host + '/change-password/' + store.user.id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + app.user.token,
+      Authorization: 'Token token=' + store.user.token,
     },
     data: data
   });
@@ -31,10 +32,10 @@ const changePassword = (data) => {
 
 const signOut = () => {
   return $.ajax({
-    url: app.host + '/sign-out/' + app.user.id,
+    url: app.host + '/sign-out/' + store.user.id,
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + app.user.token
+      Authorization: 'Token token=' + store.user.token
     },
   });
 };
