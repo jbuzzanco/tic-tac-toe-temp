@@ -37,11 +37,39 @@ const onSignOutUser = function () {
   .catch(ui.failure);
 };
 
+//click handlers
+// let clicked_box = function(){
+//   $(this).text('XX');
+//   console.log('clicked');
+//
+// };
+
 const addHandlers = () => {
+  //log in info
   $('#sign-up').on('submit', onSignUpUser);
   $('#sign-in').on('submit', onSignInUser);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('click', onSignOutUser);
+
+  //click handlers
+  // $('.box-0').on("click", clicked_box);
+  //
+  // $('.box-1').on("click", clicked_box);
+  //
+  // $('.box-2').on("click", clicked_box);
+  //
+  // $('.box-3').on("click", clicked_box);
+  //
+  // $('.box-4').on("click", clicked_box);
+  //
+  // $('.box-5').on("click", clicked_box);
+  //
+  // $('.box-6').on("click", clicked_box);
+  //
+  // $('.box-7').on("click", clicked_box);
+  //
+  // $('.box-8').on("click", clicked_box);
+
 };
 
 
