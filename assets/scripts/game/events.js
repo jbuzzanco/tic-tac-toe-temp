@@ -16,7 +16,8 @@ let checkWins = function() {
   console.log(board);
   console.log(board[0] === board[1]);
   console.log(board[2] === board[0]);
-  console.log(!!board[0])
+  console.log(!!board[0]);
+
  if (board[0] !== '' && board[0] === board[1] && board[2] === board[0]) {
    console.log(store.turn + " Wins");
  }
