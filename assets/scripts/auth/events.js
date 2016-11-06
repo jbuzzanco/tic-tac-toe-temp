@@ -15,7 +15,6 @@ const onSignUpUser = function (event) {
 
 const onSignInUser = function (event) {
   event.preventDefault();
-  // debugger;
   let data = getFormFields(event.target);
   // $('.player-id').text("Hello!: " + data);
   api.signIn(data)
