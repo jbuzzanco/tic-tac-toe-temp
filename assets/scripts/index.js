@@ -13,5 +13,6 @@ const gameEvents = require('./game/events.js');
 $(() => {
   authEvents.addHandlers();
   gameEvents.addHandlers();
+  gameEvents.reset();
 
 });
