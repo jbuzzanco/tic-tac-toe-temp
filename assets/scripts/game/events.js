@@ -88,7 +88,7 @@ const addHandlers = function() {
 const reset = function(){
   $('.reset').on('click', function(){
     debugger;
-  $('.reset').show('tic-tac-toe-board');
+  $('.tic-tac-toe-board').show();
   });
 };
 
