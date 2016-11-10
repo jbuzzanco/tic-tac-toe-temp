@@ -86,14 +86,16 @@ const addHandlers = function() {
 };
 
 const reset = function(){
-  debugger;
-  $('.reset').on('submit', function(){
+  $('.reset').on('click', function(){
+    debugger;
   $('.reset').show('tic-tac-toe-board');
-});
+  });
 };
 
 
 module.exports = {
   addHandlers,
-  checkWins
+  checkWins,
+  reset
+
 };
