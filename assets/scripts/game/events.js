@@ -9,15 +9,14 @@ const getFormFields = require('../../../lib/get-form-fields');
 
 
 let winner = "x" || "o";
-let boardArray = ['','','','','','','','','',];
+let boardArray = ['','','','','','','','',''];
 
 const reset = function(){
-  $('.reset').on('click', function(){
-    boardArray = ['','','','','','','','','',];
-    debugger;
-  $('.tic-tac-toe-board').show();
-
-  });
+    boardArray = ['','','','','','','','',''];
+    $.each($('.box'), function(index, element) {
+      $(element).html(''); } ) ;
+    $('.tic-tac-toe-board').show();
+    $(this).on('click');
 };
 
 
@@ -92,6 +91,7 @@ const addHandlers = function() {
       boardArray[index] = store.turn;
       checkWins();
   });
+  $('.reset').on('click', reset);
 };
 
 module.exports = {
