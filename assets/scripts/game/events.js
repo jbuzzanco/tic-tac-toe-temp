@@ -64,11 +64,12 @@ let checkWins = function() {
 //     debugger;
 //   }
 // };
-
+let player1 = 'x';
+let player2 = 'o';
 
 let boxClick = function(){
    console.log('click');
-    store.turn = store.turn === "x"?"o":"x";
+    store.turn = store.turn === player1?player2:player1;
     $(this).html(store.turn);
     $(this).off('click');
     // turns div's value to first click value
@@ -86,8 +87,10 @@ const reset = function(){
     boardArray = ['','','','','','','','',''];
     $.each($('.box'), function(index, element) {
       $(element).html(''); } ) ;
+      player1 = 'x';
     $('.tic-tac-toe-board').show();
     $('.box').on('click', boxClick);
+
     console.log('reset');
 };
 
