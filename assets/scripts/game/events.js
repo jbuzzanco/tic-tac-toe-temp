@@ -73,24 +73,24 @@ let checkWins = function() {
 //     debugger;
 //   }
 // };
-
-
+let boxClick = function(){
+   console.log('click');
+    store.turn = store.turn === "x"?"o":"x";
+    $(this).html(store.turn);
+    $(this).off('click');
+    // turns div's value to first click value
+    // TODO make sure click is turned back on for game reset.
+    // change board array to reflect changes in HTML
+    store.win = store.win === ("x" && "x" && "x") || ("o" && "o" && "o");
+    let index = $(this).data('index');
+    // find the index of the box clicked --jQuery to reference the data-index in html
+    // set board array of that index to store.turn
+    boardArray[index] = store.turn;
+    checkWins();
+};
 
 const addHandlers = function() {
-  $('.box').on('click', function(){
-      store.turn = store.turn === "x"?"o":"x";
-      $(this).html(store.turn);
-      $(this).off('click');
-      // turns div's value to first click value
-      // TODO make sure click is turned back on for game reset.
-      // change board array to reflect changes in HTML
-      store.win = store.win === ("x" && "x" && "x") || ("o" && "o" && "o");
-      let index = $(this).data('index');
-      // find the index of the box clicked --jQuery to reference the data-index in html
-      // set board array of that index to store.turn
-      boardArray[index] = store.turn;
-      checkWins();
-  });
+  $('.box').on('click', boxClick);
   $('.reset').on('click', reset);
 };
 
