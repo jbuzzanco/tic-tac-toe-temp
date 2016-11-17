@@ -6,25 +6,13 @@ const ui = require('./ui');
 const store = require('../store');
 const getFormFields = require('../../../lib/get-form-fields');
 
-
-
-let winner = "x" || "o";
 let boardArray = ['','','','','','','','',''];
 
-const reset = function(){
-    boardArray = ['','','','','','','','',''];
-    $.each($('.box'), function(index, element) {
-      $(element).html(''); } ) ;
-    $('.tic-tac-toe-board').show();
-    $(this).on('click');
-};
-
-
 let checkWins = function() {
-  console.log(boardArray);
-  console.log(boardArray[0] === boardArray[1]);
-  console.log(boardArray[2] === boardArray[0]);
-  console.log(!!boardArray[0]);
+//   console.log(boardArray);
+//   console.log(boardArray[0] === boardArray[1]);
+//   console.log(boardArray[2] === boardArray[0]);
+//   console.log(!!boardArray[0]);
 
 // horizontal wins
  if (boardArray[0] !== '' && boardArray[0] === boardArray[1] && boardArray[2] === boardArray[0]) {
@@ -74,10 +62,15 @@ let checkWins = function() {
 //   }
 // };
 let boxClick = function(){
-   console.log('click');
-    store.turn = store.turn === "x"?"o":"x";
+    console.log('click');
+    if (store.turn === "x"){
+       store.turn = "o";
+    } else {
+       store.turn = "x";
+    }
+
     $(this).html(store.turn);
-    $(this).off('click');
+    // $(this).off('click');
     // turns div's value to first click value
     // TODO make sure click is turned back on for game reset.
     // change board array to reflect changes in HTML
@@ -89,8 +82,18 @@ let boxClick = function(){
     checkWins();
 };
 
+
+const reset = function(){
+    boardArray = ['','','','','','','','',''];
+    $.each($('.box'), function(index, element) {
+        $(element).html('');
+        $(element).one('click', boxClick);
+      } ) ;
+    $('.tic-tac-toe-board').show();
+};
+
 const addHandlers = function() {
-  $('.box').on('click', boxClick);
+  $('.box').one('click', boxClick);
   $('.reset').on('click', reset);
 };
 
