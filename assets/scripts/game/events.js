@@ -57,13 +57,6 @@ let checkWins = function() {
     }
  };
 
- let gameResolutionTie = function() {
-   if (gameTurns === 8) {
-     console.log('Tie');
-     // $('.info').text('It is a tie. Press the New Game button to play a new game.');
-   }
- };
-
 let boxClick = function(){
    console.log('store.turn is ', store.turn);
     if (store.turn === "x"){
@@ -114,7 +107,6 @@ const addHandlers = function() {
 
 module.exports = {
   addHandlers,
-  gameResolutionTie,
   checkWins,
   reset
 
