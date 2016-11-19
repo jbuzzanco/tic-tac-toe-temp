@@ -8,6 +8,8 @@ const getFormFields = require('../../../lib/get-form-fields');
 
 let boardArray = ['','','','','','','','',''];
 
+let gameTurns = 0;
+
 let checkWins = function() {
 //   console.log(boardArray);
 //   console.log(boardArray[0] === boardArray[1]);
@@ -17,53 +19,49 @@ let checkWins = function() {
 // horizontal wins
  if (boardArray[0] !== '' && boardArray[0] === boardArray[1] && boardArray[2] === boardArray[0]) {
    console.log(store.turn + " Wins");
+   $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
  }
   else if (boardArray[3] !== '' && boardArray[3] === boardArray[4] && boardArray[5] === boardArray[3]) {
-     console.log(store.turn + " Wins");
+     $('.gameEnd').text(store.turn + " Wins! Play again?");
      $('.tic-tac-toe-board').hide();
   }
   else if (boardArray[6] !== '' && boardArray[6] === boardArray[7] && boardArray[8] === boardArray[6]) {
-   console.log(store.turn + " Wins");
+   $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
  }
  //vertical Wins
   else if (boardArray[0] !== '' && boardArray[0] === boardArray[3] && boardArray[6] === boardArray[0]) {
-  console.log(store.turn + " Wins");
+  $('.gameEnd').text(store.turn + " Wins! Play again?");
   $('.tic-tac-toe-board').hide();
   }
   else if (boardArray[1] !== '' && boardArray[1] === boardArray[4] && boardArray[7] === boardArray[1]) {
-   console.log(store.turn + " Wins");
+   $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
   }
   else if (boardArray[2] !== '' && boardArray[2] === boardArray[5] && boardArray[8] === boardArray[2]) {
-   console.log(store.turn + " Wins");
+   $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
   }
   // diagonal Wins
   else if (boardArray[0] !== '' && boardArray[0] === boardArray[4] && boardArray[8] === boardArray[0]) {
-   console.log(store.turn + " Wins");
+   $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
   }
   else if (boardArray[2] !== '' && boardArray[2] === boardArray[4] && boardArray[6] === boardArray[2]) {
-   console.log(store.turn + " Wins");
+   $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
   }
-  else {
-    console.log('catscratch! It is a draw');
-    $('.tic-tac-toe-board').hide();
-  }
+
  };
 
-//  const gameResolutionXorO = function() {
-//    let victor;
-//    if (boardArray[0] === 'x' && boardArray[1] === 'x' && boardArray[2] === 'x') {
-//      victor = gameBoardArray[0];
-//      gameIsOver = true;
-//     console.log(victor + ' has won.');
-//     debugger;
-//   }
-// };
+ let gameResolutionTie = function() {
+   if (gameTurns === 9) {
+     console.log('Tie');
+     // $('.info').text('It is a tie. Press the New Game button to play a new game.');
+   }
+ };
+
 let boxClick = function(){
    console.log('store.turn is ', store.turn);
     if (store.turn === "x"){
@@ -71,6 +69,7 @@ let boxClick = function(){
     } else {
        store.turn = "x";
     }
+    gameTurns++;
     console.log('store.turn is ', store.turn);
     $(this).html(store.turn);
 
@@ -88,8 +87,9 @@ let boxClick = function(){
     checkWins();
 };
 
+
+
 const reset = function(){
-  debugger;
     boardArray = ['','','','','','','','',''];
     $('.box').off('click');
     $.each($('.box'), function(index, element) {
@@ -111,6 +111,7 @@ const addHandlers = function() {
 
 module.exports = {
   addHandlers,
+  gameResolutionTie,
   checkWins,
   reset
 
