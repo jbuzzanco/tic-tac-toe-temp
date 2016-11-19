@@ -52,11 +52,13 @@ let checkWins = function() {
    $('.gameEnd').text(store.turn + " Wins! Play again?");
    $('.tic-tac-toe-board').hide();
   }
-
+  else if (boardArray.indexOf('') < 0){
+      $('.gameEnd').text("Tie Game!");
+    }
  };
 
  let gameResolutionTie = function() {
-   if (gameTurns === 9) {
+   if (gameTurns === 8) {
      console.log('Tie');
      // $('.info').text('It is a tie. Press the New Game button to play a new game.');
    }
@@ -102,6 +104,7 @@ const reset = function(){
          store.turn = "x";
       }
     $('.tic-tac-toe-board').show();
+    $('.gameEnd').text('');
 };
 
 const addHandlers = function() {
