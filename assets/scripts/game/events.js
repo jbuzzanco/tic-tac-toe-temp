@@ -49,7 +49,10 @@ let checkWins = function() {
    console.log(store.turn + " Wins");
    $('.tic-tac-toe-board').hide();
   }
-
+  else {
+    console.log('catscratch! It is a draw');
+    $('.tic-tac-toe-board').hide();
+  }
  };
 
 //  const gameResolutionXorO = function() {
@@ -62,33 +65,42 @@ let checkWins = function() {
 //   }
 // };
 let boxClick = function(){
-    console.log('click');
+   console.log('store.turn is ', store.turn);
     if (store.turn === "x"){
        store.turn = "o";
     } else {
        store.turn = "x";
     }
-
+    console.log('store.turn is ', store.turn);
     $(this).html(store.turn);
+
+    console.log(store.turn);
     // $(this).off('click');
     // turns div's value to first click value
-    // TODO make sure click is turned back on for game reset.
     // change board array to reflect changes in HTML
     store.win = store.win === ("x" && "x" && "x") || ("o" && "o" && "o");
     let index = $(this).data('index');
+    console.log(store.turn);
     // find the index of the box clicked --jQuery to reference the data-index in html
     // set board array of that index to store.turn
     boardArray[index] = store.turn;
+    console.log(store.turn);
     checkWins();
 };
 
-
 const reset = function(){
+  debugger;
     boardArray = ['','','','','','','','',''];
+    $('.box').off('click');
     $.each($('.box'), function(index, element) {
         $(element).html('');
         $(element).one('click', boxClick);
       } ) ;
+      if (store.turn === "x"){
+         store.turn = "o";
+      } else {
+         store.turn = "x";
+      }
     $('.tic-tac-toe-board').show();
 };
 
