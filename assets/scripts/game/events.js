@@ -5,16 +5,12 @@ const api = require('./api');
 const ui = require('./ui');
 const store = require('../store');
 const getFormFields = require('../../../lib/get-form-fields');
-
-let boardArray = ['','','','','','','','',''];
+import {getGame, createGame, updateGame, getGames} from './api';
 
 let gameTurns = 0;
 
 let checkWins = function() {
-//   console.log(boardArray);
-//   console.log(boardArray[0] === boardArray[1]);
-//   console.log(boardArray[2] === boardArray[0]);
-//   console.log(!!boardArray[0]);
+let boardArray = store.game.cells;
 
 // horizontal wins
  if (boardArray[0] !== '' && boardArray[0] === boardArray[1] && boardArray[2] === boardArray[0]) {
@@ -55,6 +51,10 @@ let checkWins = function() {
   else if (boardArray.indexOf('') < 0){
       $('.gameEnd').text("Tie Game!");
     }
+    else{
+      return false;
+    }
+    return true;
  };
 
 
@@ -71,36 +71,44 @@ let boxClick = function(){
     console.log('store.turn is ', store.turn);
     $(this).html(store.turn);
 
-    console.log(store.turn);
+    // console.log(store.turn);
     // $(this).off('click');
     // turns div's value to first click value
     // change board array to reflect changes in HTML
     store.win = store.win === ("x" && "x" && "x") || ("o" && "o" && "o");
     let index = $(this).data('index');
-    console.log(store.turn);
+    // console.log(store.turn);
     // find the index of the box clicked --jQuery to reference the data-index in html
     // set board array of that index to store.turn
-    boardArray[index] = store.turn;
+    // boardArray[index] = store.turn;
+
     console.log(store.turn);
-    checkWins();
+    if(store.game){
+    store.game.cells[index] = store.turn;
+    updateGame(index,store.turn,checkWins());
+  }
 };
 
 
 
 const reset = function(){
-    boardArray = ['','','','','','','','',''];
+  getGames().then(data=>{
+    console.log(data);
+    $('.game-stats').html(data.games.length + ' games played!!');
+  });
+  createGame().then(game=>{
+    window.store = store;
+    store.game = game.game;
     $('.box').off('click');
     $.each($('.box'), function(index, element) {
         $(element).html('');
         $(element).one('click', boxClick);
       } ) ;
-      if (store.turn === "x"){
-         store.turn = "o";
-      } else {
-         store.turn = "x";
-      }
+      store.turn = "o";
     $('.tic-tac-toe-board').show();
     $('.gameEnd').text('');
+  });
+
 };
 
 const addHandlers = function() {

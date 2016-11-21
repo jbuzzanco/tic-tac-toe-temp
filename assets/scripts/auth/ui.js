@@ -1,5 +1,6 @@
 'use strict';
 const store = require('../store.js');
+import {reset} from '../game/events';
 
 const success = (data) => {
   console.log(data);
@@ -12,6 +13,8 @@ const failure = (error) => {
 const signInSuccess = (data) => {
   console.log(data);
   store.user = data.user;
+  reset();
+
 };
 
 const signInFailure = (error) => {

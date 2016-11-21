@@ -7,9 +7,20 @@ $black-color: '#000000';
 }
 
 .box {
-  border: 2px solid;
-  border-color: $black-color;
-  height: 100px;
   position: relative;
   width: 100px;
+  height: 100px;
+  border: 2px solid;
+  border-color: $black-color;
+}
+
+.game-stats{
+  position:fixed;
+  top:70px;
+  right:20px;
+  padding:5px;
+  border-radius:6px;
+  background-color:#333333;
+  color:white;
+  font-size:30px;
 }

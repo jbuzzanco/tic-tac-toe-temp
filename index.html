@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Tic Tac Toe</title>
     <script src="dependencies.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
   </head>
+
   <body>
     <!-- NAVBAR STARTS HERE -->
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
+        <div class="game-stats">
+        </div>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           </button>
           <a class="navbar-brand" href="#">TIC-TAC-TOE</a>
@@ -20,7 +25,8 @@
         <div class="sign-up-form" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SIGN UP/IN? <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">SIGN UP/IN? <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li>
                   <a>
@@ -32,29 +38,29 @@
                 </li>
                 <li>
                   <form class="sign-in-form" id="sign-in">
-                  <p>Sign In</p>
+                    <p>Sign In</p>
 
                     <input name="credentials[email]" type="text" value="" placeholder="email">
                     <input name="credentials[password]" type="password" value="" placeholder="password, bro">
 
                     <input type="submit" name="submit" value="Sign in!">
-                </form>
+                  </form>
                 </li>
 
                 <li>
                   <form id="change-password">
-                  <p>Change Password</p>
-                  <input type="password" name="passwords[old]" value="" placeholder="Old Password">
-          <input type="password" name="passwords[new]" value="" placeholder="New Password">
-          <input type="submit" name="submit" value="Change Password">
+                    <p>Change Password</p>
+                    <input type="password" name="passwords[old]" value="" placeholder="Old Password">
+                    <input type="password" name="passwords[new]" value="" placeholder="New Password">
+                    <input type="submit" name="submit" value="Change Password">
                   </form>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li>
-                <form id="sign-out">
-                  <input type="submit" name="submit" value="Sign out!">
-                </form>
-              </li>
+                  <form id="sign-out">
+                    <input type="submit" name="submit" value="Sign out!">
+                  </form>
+                </li>
               </ul>
             </li>
           </ul>
@@ -85,7 +91,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="reset">Play again</button>
+    <button id="new-game" type="submit" class="reset">Start Game or Play Again</button>
     <h2 class="gameEnd"></h2>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -119,4 +125,5 @@
       </div>
     </footer>
   </body>
+
 </html>

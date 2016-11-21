@@ -8,9 +8,12 @@
 const authEvents = require('./auth/events.js');
 
 const gameEvents = require('./game/events.js');
-
+import {getGames, getGame} from './game/api';
+window.getGames = getGames;
 // On document ready
 $(() => {
   authEvents.addHandlers();
   gameEvents.addHandlers();
+
+
 });
