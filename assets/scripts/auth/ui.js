@@ -13,6 +13,7 @@ const failure = (error) => {
 const signInSuccess = (data) => {
   console.log(data);
   store.user = data.user;
+  $('.reset').html('Start a new Game or Play Again!')
   reset();
 
 };

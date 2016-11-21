@@ -14,6 +14,7 @@ window.getGames = getGames;
 $(() => {
   authEvents.addHandlers();
   gameEvents.addHandlers();
-
+$('.tic-tac-toe-board').hide();
+$('.reset').html('You must sign in before playing');
 
 });
