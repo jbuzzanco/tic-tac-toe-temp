@@ -57,6 +57,9 @@ let checkWins = function() {
     }
  };
 
+
+
+
 let boxClick = function(){
    console.log('store.turn is ', store.turn);
     if (store.turn === "x"){
