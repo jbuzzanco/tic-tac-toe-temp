@@ -1,3 +1,5 @@
+'use strict';
+
 const host = require('../app').host;
 const store = require('../store');
 
