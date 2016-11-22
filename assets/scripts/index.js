@@ -8,11 +8,13 @@
 const authEvents = require('./auth/events.js');
 
 const gameEvents = require('./game/events.js');
-
+import {getGames, getGame} from './game/api';
+window.getGames = getGames;
 // On document ready
 $(() => {
   authEvents.addHandlers();
   gameEvents.addHandlers();
-  gameEvents.reset();
+$('.tic-tac-toe-board').hide();
+$('.reset').html('You must sign in before playing');
 
 });
